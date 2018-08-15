@@ -11,7 +11,7 @@ import UIKit
 class TodoListViewController: UITableViewController {
     
     
-    let myItems = ["Home","Shopping","Study","Health","Entertainment","Extra"]
+    var myItems = ["Home","Shopping","Study","Health","Entertainment","Extra"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,5 +43,34 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
+    @IBAction func AddItem(_ sender: Any) {
+        
+        var myTextFiled = UITextField()
+        
+        let alert = UIAlertController.init(title: "Add New Work", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+            // things that happen ones the user clicks the button i.e the Add item button
+           // print("Succedd")
+           // print(myTextFiled.text as Any)
+           
+            self.myItems.append(myTextFiled.text!)
+            
+            self.tableView.reloadData()
+           
+            
+        }
+        // adding a text filed in the alertview.
+        alert.addTextField { (alertTextFiled) in
+            alertTextFiled.placeholder = "Create new Item as Menu"
+            //print(alertTextFiled.text)
+            myTextFiled = alertTextFiled
+        }
+        // add the alertaction
+        alert.addAction(action)
+        // present the alertview
+        present(alert, animated: true, completion: nil)
+        
+    }
 }
 

@@ -32,11 +32,18 @@
                             <outlet property="delegate" destination="wBr-Ih-mBv" id="o0R-Lg-vqZ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Works" id="Gc6-Ub-ztW"/>
+                    <navigationItem key="navigationItem" title="Your Works" id="Gc6-Ub-ztW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5mf-zK-vFo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="AddItem:" destination="wBr-Ih-mBv" id="UPx-Fu-Esz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgx-3f-Nga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="125.4872563718141"/>
+            <point key="canvasLocation" x="1972" y="93"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qQG-i7-1l8">
@@ -60,7 +67,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVN-lf-0XD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896.79999999999995" y="125.4872563718141"/>
+            <point key="canvasLocation" x="1156" y="93"/>
         </scene>
     </scenes>
 </document>
