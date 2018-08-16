@@ -36,7 +36,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5mf-zK-vFo">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="AddItem:" destination="wBr-Ih-mBv" id="UPx-Fu-Esz"/>
+                                <action selector="AddItem:" destination="wBr-Ih-mBv" id="MZo-OT-HPg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

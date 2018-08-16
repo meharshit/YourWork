@@ -12,10 +12,17 @@ class TodoListViewController: UITableViewController {
     
     
     var myItems = ["Home","Shopping","Study","Health","Entertainment","Extra"]
+    
+    let defaults = UserDefaults.standard
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       if let items = defaults.array(forKey: "ToDoListArray") as? [String]{ // type casted to the array if strings
+            myItems = items
+
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,8 +50,10 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    @IBAction func AddItem(_ sender: Any) {
-        
+    
+        @IBAction func AddItem(_ sender: Any) {
+            
+            
         var myTextFiled = UITextField()
         
         let alert = UIAlertController.init(title: "Add New Work", message: "", preferredStyle: .alert)
@@ -55,10 +64,9 @@ class TodoListViewController: UITableViewController {
            // print(myTextFiled.text as Any)
            
             self.myItems.append(myTextFiled.text!)
-            
+           self.defaults.set(self.myItems, forKey: "ToDoListArray")
             self.tableView.reloadData()
            
-            
         }
         // adding a text filed in the alertview.
         alert.addTextField { (alertTextFiled) in
@@ -72,5 +80,6 @@ class TodoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
-}
 
+
+}
