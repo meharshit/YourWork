@@ -36,14 +36,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5mf-zK-vFo">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="AddItem:" destination="wBr-Ih-mBv" id="MZo-OT-HPg"/>
+                                <action selector="AddItem:" destination="wBr-Ih-mBv" id="sdK-2v-eia"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgx-3f-Nga" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="93"/>
+            <point key="canvasLocation" x="-430" y="191"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qQG-i7-1l8">
@@ -67,7 +67,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVN-lf-0XD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="93"/>
+            <point key="canvasLocation" x="961" y="155"/>
         </scene>
     </scenes>
 </document>

@@ -11,7 +11,7 @@ import UIKit
 class TodoListViewController: UITableViewController {
     
     
-    var myItems = ["Home","Shopping","Study","Health","Entertainment","Extra"]
+    var myItems = [Items]()
     
     let defaults = UserDefaults.standard
     
@@ -19,7 +19,24 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       if let items = defaults.array(forKey: "ToDoListArray") as? [String]{ // type casted to the array if strings
+        
+        let newItem = Items()
+        newItem.title = "Shopping"
+        myItems.append(newItem)
+        
+        let newItem2 = Items()
+        newItem2.title = "Shopping"
+        myItems.append(newItem2)
+        
+        let newItem3 = Items()
+        newItem3.title = "Shopping"
+        myItems.append(newItem3)
+        
+        let newItem4 = Items()
+        newItem4.title = "Shopping"
+        myItems.append(newItem4)
+        
+       if let items = defaults.array(forKey: "ToDoListArray") as? [Items]{ // type casted to the array if strings
             myItems = items
 
         }
@@ -31,21 +48,35 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) // this actually reuses the cell and ones its disappers for lage data then it reassign it self as we saw the reassignmnet of check mark in our app.
+        let values = myItems[indexPath.row]
+        cell.textLabel?.text = values.title
         
-        cell.textLabel?.text = myItems[indexPath.row]
+        //Ternary operator==>
+        // value = condition ? Valuetrue : valuefalse
+        
+        cell.accessoryType = values.done ? .checkmark : .none // just one line for the if else statements
+        
+//        if values.done == true{
+//            cell.accessoryType = .checkmark
+//        }else{
+//            cell.accessoryType = .none
+//        }
         return cell
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       //  print(myItems[indexPath.row])
-        // code for the checkmark
-        if  tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark{
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }else{
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        myItems[indexPath.row].done = !myItems[indexPath.row].done // this line actually replaced my whole if else statements.
+        
+//        if myItems[indexPath.row].done == false{
+//            myItems[indexPath.row].done = true
+//        }else{
+//            myItems[indexPath.row].done = false
+//        }
+        
+        tableView.reloadData()
         // code for the deselct.
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -62,9 +93,12 @@ class TodoListViewController: UITableViewController {
             // things that happen ones the user clicks the button i.e the Add item button
            // print("Succedd")
            // print(myTextFiled.text as Any)
-           
-            self.myItems.append(myTextFiled.text!)
-           self.defaults.set(self.myItems, forKey: "ToDoListArray")
+            
+            let insertingValue = Items()
+            insertingValue.title = myTextFiled.text!
+            self.myItems.append(insertingValue)
+            self.defaults.set(self.myItems, forKey: "ToDoListArray")
+          //  self.defaults.synchronize()
             self.tableView.reloadData()
            
         }
